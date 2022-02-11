@@ -86,7 +86,7 @@ export const DashboardSidebar = (props) => {
           }}
         >
           <Typography
-            color="neutral.100"
+            color="neutral.400"
             variant="subtitle2"
           >
             Test Menu
