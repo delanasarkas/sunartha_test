@@ -1,6 +1,4 @@
-## Sunartha Test
-
-## How to run app
+## Sunartha Test | How to run app
 
 - Clone this app
 
@@ -12,10 +10,10 @@
 
 ## Data Warehouse
 
-![warehouse](https://ibb.co/jJpW5V3)
+![warehouse](https://i.ibb.co/z6k758P/msedge-w-WOI2v51tw.png)
 
 ## Data Detail Warehouse
 
-![detail warehouse](https://ibb.co/Gx95BZf)
+![detail warehouse](https://i.ibb.co/5MkRtQX/msedge-BHSz6h2-YJi.png)
 
 > Data pada table disesuaikan dengan data yang ada di api.
