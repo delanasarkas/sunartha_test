@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import Link from 'next/link'
+import { useRouter } from 'next/router';
 import {
   Box,
   Card,
@@ -11,41 +11,41 @@ import {
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import servicesApi from 'src/services/services.api';
 
-export const DashboardComponent = (props) => {
+export const DetailWarehouseComponent = (props) => {
 
-  // STATE
-  const [dataWarehouse, setDataWarehouse] = useState([]);
+  // STATE  
+  const [dataDetailWarehouse, setDataDetailWarehouse] = useState([]);
+  const router = useRouter().query;
 
   useEffect(() => {
-    async function getWerehouse() {
-      await servicesApi.getDataWarehouse()
+    async function getWerehouseById() {
+      await servicesApi.getDataWarehouseById(router.id)
       .then((res) => {
         // GET DATA
         const dataArr = res.data;
 
-        setDataWarehouse(dataArr);
+        setDataDetailWarehouse([dataArr]);
       })
       .catch(() => {
         console.clear()
       })
     }
 
-    getWerehouse();
+    if(router && router.id){
+        getWerehouseById();
+    }
   
     return () => {
-      setDataWarehouse([]);
+      setDataDetailWarehouse([]);
     }
-  }, [])
+  }, [router])
   
   // HEADER GRID DATA
   const columns = [
     { 
       field: 'WarehouseID', 
-      headerName: 'ID', 
-      width: 150 ,
-      renderCell: (params) => {
-        return <a href={`/detail-warehouse?id=${params.row.WarehouseID}`}>{params.row.WarehouseID}</a>
-      },
+      headerName: 'Warehouse ID', 
+      width: 150 
     },
     { 
       field: 'Branch', 
@@ -65,15 +65,15 @@ export const DashboardComponent = (props) => {
   ];
 
   return (
-    dataWarehouse.length !== 0 ?
+    dataDetailWarehouse.length !== 0 ?
     <Card {...props}>
-      <CardHeader title="Warehouse" />
+      <CardHeader title={`Detail Location Warehouse - ${router.id}`} />
       <PerfectScrollbar>
         <Box sx={{ width: '100%', height: 350 }}>
           {
-            dataWarehouse.length !== 0 && 
+            dataDetailWarehouse.length !== 0 && 
             <DataGrid 
-            rows={dataWarehouse} 
+            rows={dataDetailWarehouse} 
             columns={columns} 
             getRowId={(row) => row.WarehouseID}
             components={{ Toolbar: GridToolbar }}
