@@ -12,10 +12,10 @@
 
 ## Data Warehouse
 
-[(https://ibb.co/jJpW5V3)]
+![warehouse](https://ibb.co/jJpW5V3)
 
 ## Data Detail Warehouse
 
-[(https://ibb.co/Gx95BZf)]
+![detail warehouse](https://ibb.co/Gx95BZf)
 
 > Data pada table disesuaikan dengan data yang ada di api.
